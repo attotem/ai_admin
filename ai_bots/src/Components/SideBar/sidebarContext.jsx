@@ -23,6 +23,7 @@ export const MyProSidebarProvider = ({ children }) => {
                     setSidebarRTL,
                 }}
             >
+                
                 <div
                     style={{
                         display: "flex",

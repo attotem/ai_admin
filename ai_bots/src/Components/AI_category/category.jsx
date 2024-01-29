@@ -8,7 +8,6 @@ function CategoryForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Handle the form submission logic here
         console.log({ categoryName, categoryInfo });
     };
 
