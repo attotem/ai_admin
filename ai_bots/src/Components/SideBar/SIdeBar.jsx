@@ -13,7 +13,7 @@ import SettingsRoundedIcon from '@mui/icons-material/SettingsRounded';
 import HelpIcon from '@mui/icons-material/Help';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LogoutIcon from '@mui/icons-material/Logout';
-
+import logo from "./logo.svg"
 const Item = ({ title, to, icon, selected, setSelected }) => {
 
     const theme = useTheme();
@@ -72,6 +72,12 @@ const MyProSidebar = () => {
                     color: `${colors.greenAccent[500]} !important`,
                     backgroundColor: "transparent !important",
                 },
+                '& .MuiTypography-root': {
+                    fontSize: '1.2rem',
+                },
+                '& svg': {
+                    fontSize: '1.2rem',
+                },
             }}
         >
             <Sidebar
@@ -81,6 +87,20 @@ const MyProSidebar = () => {
                 image={sidebarImage}
             >
                 <Menu iconshape="square">
+                    <Box
+                        sx={{
+                            paddingLeft: collapsed ? undefined : "10%",
+                            marginBottom: "1rem",
+                            marginTop: "1rem",
+                            textAlign: "center",
+                            "& img": {
+                                width: "50%",
+                            },
+                        }}
+                    >
+                        <img src={logo} alt="Logo" />
+                    </Box>
+
                     <Box paddingLeft={collapsed ? undefined : "10%"}>
                         <Item
                             title="Analytics"
@@ -121,8 +141,7 @@ const MyProSidebar = () => {
 
                     </Box>
 
-                    <Box
-                        paddingLeft={collapsed ? undefined : "10%"}
+                    <Box paddingLeft={collapsed ? undefined : "10%"}
                         position={"absolute"}
                         bottom={0}
 
@@ -144,9 +163,8 @@ const MyProSidebar = () => {
                         />
                         <Item
                             title="Log out"
-                            to="/logout"
+                            to="/login"
                             icon={<LogoutIcon />}
-                            selected={selected}
                             setSelected={setSelected}
                         />
 

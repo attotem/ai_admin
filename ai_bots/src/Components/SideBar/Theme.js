@@ -58,6 +58,12 @@ export const tokens = (mode) => ({
                 700: "#3e4396",
                 800: "#2a2d64",
                 900: "#151632"
+            },
+            white : {
+                100: "#ffffff",
+            },
+            secondary : {
+                100: "#7C8DB5",
             }
         }
         : 
@@ -119,7 +125,8 @@ export const tokens = (mode) => ({
             },
             white : {
                 100: "#ffffff",
-            }
+            },
+            secondary : "#7C8DB5",
         })
 });
 

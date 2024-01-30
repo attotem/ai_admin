@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import reportWebVitals from './reportWebVitals';
+// import reportWebVitals from './reportWebVitals';
 import Routing from './Routing';
 import { BrowserRouter as Router } from 'react-router-dom';
 
@@ -19,4 +19,4 @@ root.render(
 );
 
 
-reportWebVitals();
+// reportWebVitals();

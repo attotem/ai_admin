@@ -100,6 +100,7 @@ function CustomFormValidation() {
                           Remember password
                         </label>
                       </div>
+
                       <div className="d-grid">
                         <button
                           className="btn btn-lg btn-primary btn-login text-uppercase fw-bold mb-2"
@@ -112,6 +113,13 @@ function CustomFormValidation() {
                           <a className="small" href="#">
                             Forgot password?
                           </a>
+                        </div>
+
+                        <div className="text-center mt-3">
+                            Dont have an account?
+                            <a className="small" href="/singup">
+                                Sign Up
+                            </a>
                         </div>
                       </div>
                     </form>
