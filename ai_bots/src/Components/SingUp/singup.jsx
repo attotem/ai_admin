@@ -3,6 +3,7 @@ import '../Login/login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { useNavigate } from 'react-router-dom';
+import bcrypt from 'bcryptjs';
 
 const defaultState = {
     FirstName: null,
@@ -35,6 +36,39 @@ function CustomFormValidation() {
     const submit = () => {
 
 
+        const hashedPassword = bcrypt.hashSync(state.password, 10);
+
+        console.log(state.email)
+        console.log(state.FirstName + "\t" + state.LastName)
+        console.log(hashedPassword)
+        fetch("http://127.0.0.1:8000/auth/sign_up", {
+            method: "POST",
+            mode: "cors",
+            cache: "no-cache",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: state.email,
+                username: state.FirstName + "\t" + state.LastName,
+                password: hashedPassword
+            })
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                if (data) {
+                    navigate("/dashboard")
+                }
+                else {
+                    console.warn(state);
+                    setState({
+                        ...defaultState,
+                    });
+                }
+            })
+            .catch(error => { console.error("Error fetching data:", error); })
+
     };
 
     return (
@@ -64,7 +98,6 @@ function CustomFormValidation() {
                                                         onChange={handleInputChange}
                                                     />
                                                     <label htmlFor="floatingInput">First Name</label>
-                                                    <span className="text-danger">{state.FirstName}</span>
                                                 </div>
 
                                                 <div className="form-floating mb-3">
@@ -74,11 +107,10 @@ function CustomFormValidation() {
                                                         id="floatingInput"
                                                         name="LastName"
                                                         placeholder="name@example.com"
-                                                        value={state.email || ''}
+                                                        value={state.LastName || ''}
                                                         onChange={handleInputChange}
                                                     />
                                                     <label htmlFor="floatingInput">Last Name</label>
-                                                    <span className="text-danger">{state.LastName}</span>
                                                 </div>
 
                                             </div>
@@ -121,7 +153,7 @@ function CustomFormValidation() {
                                                     id="floatingPassword"
                                                     name="repassword"
                                                     placeholder="rePassword"
-                                                    value={state.password || ''}
+                                                    value={state.repassword || ''}
                                                     onChange={handleInputChange}
                                                 />
                                                 <label htmlFor="floatingPassword">Confirm Password</label>

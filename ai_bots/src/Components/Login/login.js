@@ -3,6 +3,7 @@ import './login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import { useNavigate } from 'react-router-dom';
+import bcrypt from 'bcryptjs';
 
 const defaultState = {
   name: null,
@@ -31,17 +32,36 @@ function CustomFormValidation() {
   };
 
   const submit = () => {
-      
-      if (state.email === '1' && state.password === '1') {
-        navigate('/dashboard');
-        
-      } else {
-        console.warn(state);
-        setState({
-          ...defaultState,
-        });
-      }
-    // }
+
+    const hashedPassword = bcrypt.hashSync(state.password, 10);
+    console.log(state.password)
+    console.log("/////////")
+    console.log(hashedPassword)
+    fetch("http://127.0.0.1:8000/auth/login", {
+        method: "POST",
+        mode: "cors",
+        cache: "no-cache",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username: state.email, 
+          password: hashedPassword
+        })})
+      .then(response => response.json())
+      .then(data => {
+          console.log(data)
+          if (data){
+            navigate("/dashboard")
+          }
+          else{
+            console.warn(state);
+            setState({
+              ...defaultState,
+            });
+          }
+      })
+      .catch(error=>{console.error("Error fetching data:", error);})
   };
 
   return (

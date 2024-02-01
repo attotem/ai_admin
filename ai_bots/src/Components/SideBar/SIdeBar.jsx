@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, Sidebar, MenuItem } from "react-pro-sidebar";
+import { Menu, Sidebar, MenuItem, SubMenu } from "react-pro-sidebar";
 import { useProSidebar } from "react-pro-sidebar";
 import { useSidebarContext } from "./sidebarContext";
 import { Link } from "react-router-dom";
@@ -14,12 +14,17 @@ import HelpIcon from '@mui/icons-material/Help';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LogoutIcon from '@mui/icons-material/Logout';
 import logo from "./logo.svg"
-const Item = ({ title, to, icon, selected, setSelected }) => {
 
+
+const Item = ({ title, to, icon, selected, setSelected, newColor }) => {
     const theme = useTheme();
     const colors = tokens(theme.palette.mode);
 
-    const itemColor = selected === title ? colors.blueAccent[100] : colors.secondary;
+    let itemColor = selected === title ? colors.blueAccent[100] : colors.secondary;
+
+    if (newColor && newColor !== "") {
+        itemColor = newColor;
+    }
 
     return (
         <MenuItem
@@ -31,7 +36,6 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
             <Link to={to} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Typography>{title}</Typography>
             </Link>
-
         </MenuItem>
     );
 };
@@ -101,7 +105,8 @@ const MyProSidebar = () => {
                         <img src={logo} alt="Logo" />
                     </Box>
 
-                    <Box paddingLeft={collapsed ? undefined : "10%"}>
+                    <Box paddingLeft={collapsed ? undefined : "10%"}
+                    >
                         <Item
                             title="Analytics"
                             to="/analytics"
@@ -110,13 +115,34 @@ const MyProSidebar = () => {
                             setSelected={setSelected}
                         />
 
-                        <Item
-                            title="AI category"
-                            to="/category"
+                        <SubMenu
                             icon={<BusinessCenterRoundedIcon />}
-                            selected={selected}
-                            setSelected={setSelected}
-                        />
+                            label="Charts">
+
+                            < Item
+                                icon={< BusinessCenterRoundedIcon />}
+                                title="AI что-то"
+                                to="/category"
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                            <Item
+                                icon={<BusinessCenterRoundedIcon />}
+                                title="AI catalog"
+                                to="/category"
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                            <Item
+                                icon={<BusinessCenterRoundedIcon />}
+                                title="AI я ебу"
+                                to="/category"
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                        </SubMenu>
+
+
                         <Item
                             title="Users"
                             to="/users"
@@ -166,6 +192,7 @@ const MyProSidebar = () => {
                             to="/login"
                             icon={<LogoutIcon />}
                             setSelected={setSelected}
+                            newColor="red"
                         />
 
 
