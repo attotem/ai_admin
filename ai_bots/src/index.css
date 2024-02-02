@@ -11,3 +11,21 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.css-honxw6 {
+  width: 7px !important;
+  height: 7px !important;
+}
+.css-jn69v9 {
+  width: 7px !important;
+  height: 7px !important
+}
+.css-16jesut >.ps-menu-button {
+ font-size: 1.2rem !important;
+ color:#7C8DB5 !important
+}
+.Chart_wrapper {
+  border: 1px solid rgb(124 141 181 / 50%);
+  width: max-content;
+  padding: 15px;
+  border-radius: 20px;
+}

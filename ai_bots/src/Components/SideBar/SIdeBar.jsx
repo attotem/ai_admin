@@ -117,29 +117,23 @@ const MyProSidebar = () => {
 
                         <SubMenu
                             icon={<BusinessCenterRoundedIcon />}
-                            label="Charts">
+                            label="Ai category">
 
+                            <Item
+                                title="All categories"
+                                to="/category"
+                                selected={selected}
+                                setSelected={setSelected}
+                            />
+                            
                             < Item
-                                icon={< BusinessCenterRoundedIcon />}
-                                title="AI что-то"
-                                to="/category"
+                                title="Create category"
+                                to="/category_create"
                                 selected={selected}
                                 setSelected={setSelected}
                             />
-                            <Item
-                                icon={<BusinessCenterRoundedIcon />}
-                                title="AI catalog"
-                                to="/category"
-                                selected={selected}
-                                setSelected={setSelected}
-                            />
-                            <Item
-                                icon={<BusinessCenterRoundedIcon />}
-                                title="AI я ебу"
-                                to="/category"
-                                selected={selected}
-                                setSelected={setSelected}
-                            />
+
+
                         </SubMenu>
 
 
