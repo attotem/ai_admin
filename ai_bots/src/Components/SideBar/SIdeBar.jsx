@@ -109,7 +109,7 @@ const MyProSidebar = () => {
                     >
                         <Item
                             title="Analytics"
-                            to="/analytics"
+                            to="/dashboard"
                             icon={<SignalCellularAltRoundedIcon />}
                             selected={selected}
                             setSelected={setSelected}
@@ -125,7 +125,7 @@ const MyProSidebar = () => {
                                 selected={selected}
                                 setSelected={setSelected}
                             />
-                            
+
                             < Item
                                 title="Create category"
                                 to="/category_create"

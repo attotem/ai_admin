@@ -4,6 +4,7 @@ import DefaultLayout from "./Components/SideBar/DefaultLayout";
 import Category from "./Components/AI_category/category"
 import SignUp from "./Components/SingUp/singup"
 import Chart from "./Components/DashBoard/linechart"
+import Dashboard from "./Components/DashBoard/Dashboard";
 
 const Routing = () => {
   return (
@@ -17,7 +18,7 @@ const Routing = () => {
 
       <Route path="/singup" element={<SignUp />} />
 
-      <Route path="/dashboard" element={<DefaultLayout><Chart /></DefaultLayout>} />
+      <Route path="/dashboard" element={<DefaultLayout><Dashboard /></DefaultLayout>} />
 
       <Route path="*" element={<DefaultLayout><div>No such directory</div></DefaultLayout>} />
     </Routes>
