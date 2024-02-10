@@ -32,12 +32,7 @@ function CustomFormValidation() {
   };
 
   const submit = () => {
-
-    const hashedPassword = bcrypt.hashSync(state.password, 10);
-    console.log(state.password)
-    console.log("/////////")
-    console.log(hashedPassword)
-    fetch("http://127.0.0.1:8000/auth/login", {
+    fetch("https://ttestt.shop/api/auth/login", {
         method: "POST",
         mode: "cors",
         cache: "no-cache",
@@ -45,23 +40,18 @@ function CustomFormValidation() {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          username: state.email, 
-          password: hashedPassword
+          email: state.email, 
         })})
       .then(response => response.json())
       .then(data => {
-          console.log(data)
-          if (data){
+          if (bcrypt.compareSync(state.password, data)){
             navigate("/dashboard")
           }
           else{
-            console.warn(state);
-            setState({
-              ...defaultState,
-            });
+            console.log("Соси бибу")
           }
       })
-      .catch(error=>{console.error("Error fetching data:", error);})
+      .catch(error=>{console.error("Error fetching data:", error);}) 
   };
 
   return (

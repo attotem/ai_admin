@@ -14,7 +14,7 @@ const DefaultLayout = ({ children }) => {
                 <MyProSidebarProvider>
                     <div style={{ height: "100%", width: "100%" }}>
                         <main
-                            style={{ padding: "3rem" }}>
+                            style={{ padding: "1rem 3rem" }}>
                             {children}
                         </main>
                     </div>

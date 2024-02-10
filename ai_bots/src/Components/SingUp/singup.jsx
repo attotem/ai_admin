@@ -41,7 +41,7 @@ function CustomFormValidation() {
         console.log(state.email)
         console.log(state.FirstName + "\t" + state.LastName)
         console.log(hashedPassword)
-        fetch("http://127.0.0.1:8000/auth/sign_up", {
+        fetch("https://ttestt.shop/api/auth/sign_up", {
             method: "POST",
             mode: "cors",
             cache: "no-cache",
